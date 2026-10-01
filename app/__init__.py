@@ -1,0 +1,1 @@
+"""Melody Guitars application package."""

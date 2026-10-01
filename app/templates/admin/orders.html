@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Заказы — Мелодия Гитар{% endblock %}
+{% block content %}
+<div class="mb-6"><h1 class="text-2xl font-bold">Заказы</h1><p class="text-sm text-gray-500">Изменение статуса сохраняется сразу в базе.</p></div>
+<div class="space-y-4">
+{% for order in orders %}
+<article class="bg-[#141414] border border-[#2a2a2a] rounded-xl p-5">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4"><div><div class="font-bold">Заказ #{{ order.id }}</div><div class="text-xs text-gray-500">{{ order.created_at.strftime('%d.%m.%Y %H:%M') }} · {{ order.customer_name }} · {{ order.customer_phone }}</div></div><div class="font-bold text-red-400">{{ '{:,.0f}'.format(order.total_price).replace(',', ' ') }} ₽</div></div>
+<div class="grid lg:grid-cols-[1fr_220px] gap-4"><div class="space-y-2">{% for item in order.items %}<div class="flex justify-between text-sm border-b border-[#252525] pb-2"><span>{{ item.product_name }} × {{ item.quantity }}</span><span>{{ '{:,.0f}'.format(item.price * item.quantity).replace(',', ' ') }} ₽</span></div>{% endfor %}</div>
+<form method="post" action="/admin/orders/{{ order.id }}/status" class="flex gap-2 items-end"><input type="hidden" name="token" value="{{ csrf_token }}"><label class="text-xs text-gray-500 flex-1">Статус<select class="mt-1" name="status">{% for s in statuses %}<option value="{{ s.value }}" {% if order.status == s %}selected{% endif %}>{{ s.value }}</option>{% endfor %}</select></label><button class="btn btn-dark" type="submit">Сохранить</button></form></div>
+</article>
+{% else %}<div class="text-gray-500">Заказов пока нет.</div>{% endfor %}
+</div>
+{% endblock %}

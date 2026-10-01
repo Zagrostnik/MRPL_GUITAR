@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% set editing = product is not none %}
+{% block title %}{{ 'Изменение товара' if editing else 'Новый товар' }} — Мелодия Гитар{% endblock %}
+{% block content %}
+<div class="max-w-3xl">
+<div class="flex items-center justify-between mb-6"><div><h1 class="text-2xl font-bold">{{ 'Изменение товара' if editing else 'Новый товар' }}</h1><p class="text-sm text-gray-500">Все поля можно изменить позже.</p></div><a class="btn btn-dark" href="/admin/products">← Назад</a></div>
+<form method="post" action="{{ '/admin/products/' ~ product.id ~ '/update' if editing else '/admin/products/create' }}" enctype="multipart/form-data" class="bg-[#141414] border border-[#2a2a2a] rounded-xl p-5 space-y-4">
+<input type="hidden" name="token" value="{{ csrf_token }}">
+<div><label class="text-xs text-gray-500">Название</label><input class="mt-1" name="name" value="{{ product.name if editing else '' }}" required></div>
+<div class="grid md:grid-cols-3 gap-4"><div><label class="text-xs text-gray-500">Цена, ₽</label><input class="mt-1" type="number" min="0" name="price" value="{{ product.price if editing else 0 }}" required></div><div><label class="text-xs text-gray-500">Категория</label><select class="mt-1" name="category_id" required>{% for c in categories %}<option value="{{ c.id }}" {% if editing and product.category_id == c.id %}selected{% endif %}>{{ c.name }}</option>{% endfor %}</select></div><div><label class="text-xs text-gray-500">Бренд</label><input class="mt-1" name="brand" value="{{ product.brand if editing else '' }}"></div></div>
+<div><label class="text-xs text-gray-500">Описание</label><textarea class="mt-1" name="description">{{ product.description if editing else '' }}</textarea></div>
+<div><label class="text-xs text-gray-500">Характеристики</label><textarea class="mt-1" name="specs">{{ product.specs if editing else '' }}</textarea></div>
+<div><label class="text-xs text-gray-500">Фото товара</label><input class="mt-1" type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif"></div>
+{% if editing and product.image %}<div class="text-xs text-gray-500">Текущее фото: {{ product.image }}</div><img src="{{ product.image }}" class="w-48 h-36 object-cover rounded border border-[#333]" alt="">
+{% endif %}
+<label class="flex items-center gap-2 text-sm"><input type="checkbox" name="in_stock" {% if not editing or product.in_stock %}checked{% endif %} class="w-4 h-4"> В наличии</label>
+<div class="flex gap-2 pt-2"><button class="btn btn-red" type="submit">{{ 'Сохранить изменения' if editing else 'Создать товар' }}</button><a class="btn btn-dark" href="/admin/products">Отмена</a></div>
+</form></div>
+{% endblock %}

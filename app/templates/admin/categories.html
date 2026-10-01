@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Категории — Мелодия Гитар{% endblock %}
+{% block content %}
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
+    <div><h1 class="text-2xl font-bold">Категории</h1><p class="text-sm text-gray-500">Изображение можно загрузить прямо из админки.</p></div>
+</div>
+{% if request.query_params.get('error') == 'has_products' %}<div class="mb-4 p-3 bg-yellow-950/40 border border-yellow-800 rounded text-yellow-300 text-sm">Категорию нельзя удалить: в ней ещё есть товары.</div>{% endif %}
+{% if request.query_params.get('error') == 'duplicate' %}<div class="mb-4 p-3 bg-red-950/40 border border-red-800 rounded text-red-300 text-sm">Название или slug уже используются.</div>{% endif %}
+<div class="grid lg:grid-cols-[360px_1fr] gap-6">
+<section class="bg-[#141414] border border-[#2a2a2a] rounded-xl p-5 h-fit">
+<h2 class="font-semibold mb-4">Новая категория</h2>
+<form method="post" action="/admin/categories/create" enctype="multipart/form-data" class="space-y-3">
+<input type="hidden" name="token" value="{{ csrf_token }}">
+<input name="name" placeholder="Название" required>
+<input name="slug" placeholder="slug (можно оставить пустым)">
+<input name="icon" value="fa-music" placeholder="fa-guitar">
+<input type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif">
+<button class="btn btn-red w-full" type="submit">Создать категорию</button>
+</form>
+</section>
+<section class="space-y-3">
+{% for c in categories %}
+<div class="bg-[#141414] border border-[#2a2a2a] rounded-xl p-4">
+<form method="post" action="/admin/categories/{{ c.id }}/update" enctype="multipart/form-data" class="grid md:grid-cols-[1fr_1fr_140px] gap-3 items-end">
+<input type="hidden" name="token" value="{{ csrf_token }}">
+<label class="text-xs text-gray-500">Название<input class="mt-1" name="name" value="{{ c.name }}" required></label>
+<label class="text-xs text-gray-500">Slug<input class="mt-1" name="slug" value="{{ c.slug }}" required></label>
+<label class="text-xs text-gray-500">Иконка<input class="mt-1" name="icon" value="{{ c.icon }}"></label>
+<label class="text-xs text-gray-500 md:col-span-2">Новое изображение<input class="mt-1" type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif"></label>
+<div class="flex gap-2"><button class="btn btn-dark flex-1" type="submit">Сохранить</button></div>
+</form>
+<div class="mt-3 flex items-center justify-between gap-3 text-xs text-gray-500">
+<span>{% if c.image %}{{ c.image }}{% else %}Без изображения{% endif %}</span>
+<form method="post" action="/admin/categories/{{ c.id }}/delete" onsubmit="return confirm('Удалить категорию?')"><input type="hidden" name="token" value="{{ csrf_token }}"><button class="btn btn-dark danger" type="submit">Удалить</button></form>
+</div>
+</div>
+{% else %}<div class="text-gray-500">Категорий пока нет.</div>{% endfor %}
+</section></div>
+{% endblock %}
