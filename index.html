@@ -1,491 +1,950 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Мелодия Гитар — Мелодия гитар в Мариуполе</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        darkbg: '#0a0a0a',
-                        cardbg: '#141414',
-                        cardhover: '#1c1c1c',
-                        accentred: '#b91c1c',
-                        deepred: '#7f1d1d',
-                        gold: '#d97706',
-                        goldhover: '#f59e0b',
-                        bordercol: '#262626'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              darkbg: "#0a0a0a",
+              cardbg: "#141414",
+              cardhover: "#1c1c1c",
+              accentred: "#b91c1c",
+              deepred: "#7f1d1d",
+              gold: "#d97706",
+              goldhover: "#f59e0b",
+              bordercol: "#262626",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              heading: ["Montserrat", "Inter", "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
     <!-- FontAwesome & Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        body {
-            background-color: #0a0a0a;
-            color: #f5f5f5;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, h4, h5, h6, .font-heading {
-            font-family: 'Montserrat', sans-serif;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #262626;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #b91c1c;
-        }
-        .red-line-bottom {
-            position: relative;
-        }
-        .nav-link.active {
-            color: #f5f5f5;
-            border: 1px solid #b91c1c;
-            box-shadow: 0 0 12px rgba(185, 28, 28, 0.18);
-            background: rgba(185, 28, 28, 0.08);
-            border-radius: 4px;
-            padding-left: 8px;
-            padding-right: 8px;
-        }
-        .catalog-category-button {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid #262626;
-            border-radius: 5px;
-            background: #0a0a0a;
-            color: #9ca3af;
-            transition: all .18s ease;
-            text-align: left;
-        }
-        .catalog-category-button:hover {
-            border-color: #7f1d1d;
-            color: #f5f5f5;
-            background: #141414;
-        }
-        .catalog-category-button.selected {
-            border-color: #b91c1c;
-            color: #fff;
-            background: rgba(127, 29, 29, .18);
-            box-shadow: inset 2px 0 0 #b91c1c;
-        }
+      body {
+        background-color: #0a0a0a;
+        color: #f5f5f5;
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .font-heading {
+        font-family: "Montserrat", sans-serif;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #262626;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #b91c1c;
+      }
+      .red-line-bottom {
+        position: relative;
+      }
+      .nav-link.active {
+        color: #f5f5f5;
+        border: 1px solid #b91c1c;
+        box-shadow: 0 0 12px rgba(185, 28, 28, 0.18);
+        background: rgba(185, 28, 28, 0.08);
+        border-radius: 4px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      .catalog-category-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #262626;
+        border-radius: 5px;
+        background: #0a0a0a;
+        color: #9ca3af;
+        transition: all 0.18s ease;
+        text-align: left;
+      }
+      .catalog-category-button:hover {
+        border-color: #7f1d1d;
+        color: #f5f5f5;
+        background: #141414;
+      }
+      .catalog-category-button.selected {
+        border-color: #b91c1c;
+        color: #fff;
+        background: rgba(127, 29, 29, 0.18);
+        box-shadow: inset 2px 0 0 #b91c1c;
+      }
 
-        .red-line-bottom::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #b91c1c, #d97706, transparent);
-        }
+      .red-line-bottom::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #b91c1c, #d97706, transparent);
+      }
     </style>
-</head>
-<body class="bg-darkbg text-gray-100 flex flex-col min-h-screen">
+  </head>
+  <body class="bg-darkbg text-gray-100 flex flex-col min-h-screen">
+    <header
+      class="sticky top-0 z-40 bg-darkbg/95 backdrop-blur border-b border-bordercol py-3 px-4 md:px-8"
+    >
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <a
+          href="#"
+          onclick="switchTab('home')"
+          class="flex flex-col group cursor-pointer"
+        >
+          <span
+            class="font-heading font-black text-lg md:text-xl tracking-wider text-accentred group-hover:text-red-500 transition"
+            >МЕЛОДИЯ</span
+          >
+          <span
+            class="text-xs font-semibold tracking-widest text-gray-300 uppercase -mt-1"
+            >ГИТАР</span
+          >
+          <span
+            class="text-[8px] md:text-[9px] text-gray-500 tracking-wide mt-0.5"
+            >Мелодия гитар в Мариуполе</span
+          >
+        </a>
 
-    <header class="sticky top-0 z-40 bg-darkbg/95 backdrop-blur border-b border-bordercol py-3 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" onclick="switchTab('home')" class="flex flex-col group cursor-pointer">
-                <span class="font-heading font-black text-lg md:text-xl tracking-wider text-accentred group-hover:text-red-500 transition">МЕЛОДИЯ</span>
-                <span class="text-xs font-semibold tracking-widest text-gray-300 uppercase -mt-1">ГИТАР</span>
-                <span class="text-[8px] md:text-[9px] text-gray-500 tracking-wide mt-0.5">Мелодия гитар в Мариуполе</span>
-            </a>
+        <!-- Navigation Links (Desktop) -->
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <a
+            href="#"
+            onclick="switchTab('home')"
+            id="nav-home"
+            class="nav-link text-white hover:text-accentred transition py-1 relative"
+            >Главная</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('catalog')"
+            id="nav-catalog"
+            class="nav-link text-gray-400 hover:text-accentred transition py-1 relative"
+            >Каталог</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('catalog', 'Электрогитары')"
+            id="nav-guitars"
+            class="nav-link text-gray-400 hover:text-accentred transition py-1 relative"
+            >Гитары</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('catalog', 'Аксессуары')"
+            id="nav-accessories"
+            class="nav-link text-gray-400 hover:text-accentred transition py-1 relative"
+            >Аксессуары</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('about')"
+            id="nav-about"
+            class="nav-link text-gray-400 hover:text-accentred transition py-1 relative"
+            >О магазине</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('contacts')"
+            id="nav-contacts"
+            class="nav-link text-gray-400 hover:text-accentred transition py-1 relative"
+            >Контакты</a
+          >
+        </nav>
 
-            <!-- Navigation Links (Desktop) -->
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <a href="#" onclick="switchTab('home')" id="nav-home" class="nav-link text-white hover:text-accentred transition py-1 relative">Главная</a>
-                <a href="#" onclick="switchTab('catalog')" id="nav-catalog" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Каталог</a>
-                <a href="#" onclick="switchTab('catalog', 'Электрогитары')" id="nav-guitars" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Гитары</a>
-                <a href="#" onclick="switchTab('catalog', 'Аксессуары')" id="nav-accessories" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Аксессуары</a>
-                <a href="#" onclick="switchTab('about')" id="nav-about" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">О магазине</a>
-                <a href="#" onclick="switchTab('contacts')" id="nav-contacts" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Контакты</a>
-            </nav>
-
-            <!-- Right side: Search & Cart -->
-            <div class="flex items-center space-x-4">
-                <div class="relative hidden sm:block">
-                    <input type="text" id="global-search" placeholder="Поиск по каталогу..." oninput="handleSearchInput(this.value)" class="bg-cardbg border border-bordercol rounded text-xs px-3 py-1.5 pl-8 text-gray-200 focus:outline-none focus:border-accentred w-44 md:w-56 transition">
-                    <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2 text-gray-400 text-xs"></i>
-                </div>
-                <!-- Cart Button -->
-                <button onclick="toggleCart()" class="relative bg-cardbg hover:bg-cardhover border border-bordercol text-gray-200 p-2 rounded transition flex items-center space-x-2">
-                    <i class="fa-solid fa-cart-shopping text-accentred text-sm"></i>
-                    <span class="text-xs font-medium hidden sm:inline">Корзина</span>
-                    <span id="cart-counter" class="absolute -top-1.5 -right-1.5 bg-accentred text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
-                </button>
-                <!-- Mobile Menu Button -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white p-1">
-                    <i class="fa-solid fa-bars text-lg"></i>
-                </button>
-            </div>
+        <!-- Right side: Search & Cart -->
+        <div class="flex items-center space-x-4">
+          <div class="relative hidden sm:block">
+            <input
+              type="text"
+              id="global-search"
+              placeholder="Поиск по каталогу..."
+              oninput="handleSearchInput(this.value)"
+              class="bg-cardbg border border-bordercol rounded text-xs px-3 py-1.5 pl-8 text-gray-200 focus:outline-none focus:border-accentred w-44 md:w-56 transition"
+            />
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-2.5 top-2 text-gray-400 text-xs"
+            ></i>
+          </div>
+          <!-- Cart Button -->
+          <button
+            onclick="toggleCart()"
+            class="relative bg-cardbg hover:bg-cardhover border border-bordercol text-gray-200 p-2 rounded transition flex items-center space-x-2"
+          >
+            <i class="fa-solid fa-cart-shopping text-accentred text-sm"></i>
+            <span class="text-xs font-medium hidden sm:inline">Корзина</span>
+            <span
+              id="cart-counter"
+              class="absolute -top-1.5 -right-1.5 bg-accentred text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center"
+              >0</span
+            >
+          </button>
+          <!-- Mobile Menu Button -->
+          <button
+            onclick="toggleMobileMenu()"
+            class="md:hidden text-gray-300 hover:text-white p-1"
+          >
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
         </div>
+      </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden mt-3 pt-3 border-t border-bordercol flex flex-col space-y-2 text-sm px-2">
-            <a href="#" onclick="switchTab('home'); toggleMobileMenu();" class="text-white py-1">Главная</a>
-            <a href="#" onclick="switchTab('catalog'); toggleMobileMenu();" class="text-gray-300 py-1">Каталог</a>
-            <a href="#" onclick="switchTab('catalog', 'Электрогитары'); toggleMobileMenu();" class="text-gray-300 py-1">Гитары</a>
-            <a href="#" onclick="switchTab('catalog', 'Аксессуары'); toggleMobileMenu();" class="text-gray-300 py-1">Аксессуары</a>
-            <a href="#" onclick="switchTab('about'); toggleMobileMenu();" class="text-gray-300 py-1">О магазине</a>
-            <a href="#" onclick="switchTab('contacts'); toggleMobileMenu();" class="text-gray-300 py-1">Контакты</a>
-        </div>
+      <!-- Mobile Menu Dropdown -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden mt-3 pt-3 border-t border-bordercol flex flex-col space-y-2 text-sm px-2"
+      >
+        <a
+          href="#"
+          onclick="
+            switchTab('home');
+            toggleMobileMenu();
+          "
+          class="text-white py-1"
+          >Главная</a
+        >
+        <a
+          href="#"
+          onclick="
+            switchTab('catalog');
+            toggleMobileMenu();
+          "
+          class="text-gray-300 py-1"
+          >Каталог</a
+        >
+        <a
+          href="#"
+          onclick="
+            switchTab('catalog', 'Электрогитары');
+            toggleMobileMenu();
+          "
+          class="text-gray-300 py-1"
+          >Гитары</a
+        >
+        <a
+          href="#"
+          onclick="
+            switchTab('catalog', 'Аксессуары');
+            toggleMobileMenu();
+          "
+          class="text-gray-300 py-1"
+          >Аксессуары</a
+        >
+        <a
+          href="#"
+          onclick="
+            switchTab('about');
+            toggleMobileMenu();
+          "
+          class="text-gray-300 py-1"
+          >О магазине</a
+        >
+        <a
+          href="#"
+          onclick="
+            switchTab('contacts');
+            toggleMobileMenu();
+          "
+          class="text-gray-300 py-1"
+          >Контакты</a
+        >
+      </div>
     </header>
 
     <!-- MAIN CONTAINER -->
     <main class="flex-grow">
-        
-        <div id="view-home" class="view-section">
-            <!-- HERO SECTION WITH IMMEDIATE CATEGORIES -->
-            <section class="relative bg-cardbg border-b border-bordercol overflow-hidden py-8 md:py-12 px-4 md:px-8">
-                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-10">
-                    <div class="md:col-span-7 space-y-4">
-                        <div class="inline-flex items-center space-x-2 bg-deepred/30 border border-accentred/40 px-2.5 py-1 rounded text-xs text-red-400 font-medium">
-                            <span class="w-1.5 h-1.5 rounded-full bg-accentred animate-pulse"></span>
-                            <span>Специализированный музыкальный склад-мастерская</span>
-                        </div>
-                        <h1 class="font-heading font-black text-3xl md:text-5xl uppercase tracking-tight text-white leading-none">
-                            Гитары и<br>музыкальные<br><span class="text-accentred">инструменты</span>
-                        </h1>
-                        <p class="text-gray-400 text-sm md:text-base max-w-lg font-light">
-                            Гитары, комбоусилители, струны и аксессуары. Профессиональный подбор, проверка каждого инструмента и честные цены без лишнего пафоса.
-                        </p>
-                        <div class="pt-2 flex flex-wrap gap-3">
-                            <button onclick="switchTab('catalog')" class="bg-accentred hover:bg-red-700 text-white font-semibold text-xs md:text-sm px-6 py-3 rounded transition shadow-lg shadow-red-900/30 uppercase tracking-wider flex items-center space-x-2">
-                                <span>Смотреть каталог</span>
-                                <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </button>
-                            <button onclick="switchTab('contacts')" class="bg-cardbg hover:bg-cardhover border border-bordercol text-gray-300 hover:text-white font-semibold text-xs md:text-sm px-5 py-3 transition uppercase tracking-wider">
-                                Задать вопрос
-                            </button>
-                        </div>
-                    </div>
-                    <div class="md:col-span-5 relative flex justify-center">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-accentred to-gold rounded-lg blur-sm opacity-30"></div>
-                        <div class="relative bg-darkbg border border-bordercol rounded-lg p-3 max-w-sm w-full">
-                            <img src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?auto=format&fit=crop&w=600&q=80" alt="Электрогитара" class="rounded w-full h-60 object-cover filter brightness-90 contrast-110" onerror="this.src='https://placehold.co/400x400/141414/b91c1c?text=Guitar'">
-                            <div class="mt-3 flex items-center justify-between text-xs border-t border-bordercol pt-2">
-                                <span class="text-gray-300 font-medium">Fender Stratocaster HSS</span>
-                                <span class="text-accentred font-bold">89 500 ₽</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CATEGORIES ON FIRST SCREEN -->
-                <div class="max-w-7xl mx-auto pt-4 border-t border-bordercol/60">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="font-heading font-bold text-sm md:text-base text-white uppercase tracking-wider flex items-center space-x-2">
-                            <span class="w-1.5 h-3 bg-accentred inline-block"></span>
-                            <span>Выберите категорию на первом экране</span>
-                        </h2>
-                        <span class="text-xs text-gold font-medium">Быстрый переход в магазин</span>
-                    </div>
-                    <div id="categories-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                        <!-- Populated dynamically -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- NEW ARRIVALS (4 PRODUCTS) -->
-            <section class="max-w-7xl mx-auto px-4 md:px-8 py-10">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="font-heading font-bold text-lg md:text-xl text-white uppercase tracking-wider flex items-center space-x-2">
-                        <span class="w-2 h-4 bg-accentred inline-block"></span>
-                        <span>Новые поступления</span>
-                    </h2>
-                    <button onclick="switchTab('catalog')" class="text-xs text-accentred hover:underline font-medium">Смотреть весь каталог →</button>
-                </div>
-                <div id="home-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Populated dynamically -->
-                </div>
-            </section>
-
-            <!-- ABOUT SNIPPET -->
-            <section class="max-w-7xl mx-auto px-4 md:px-8 py-6 border-t border-bordercol mt-4">
-                <div class="bg-cardbg border border-bordercol rounded-lg p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-                    <div class="md:col-span-2 space-y-3">
-                        <h3 class="font-heading font-bold text-base md:text-lg text-white">Магазин музыкальных инструментов «Мелодия Гитар»</h3>
-                        <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
-                            Гитары, комбоусилители, струны и аксессуары. Профессиональный подход к каждому музыканту. Если не знаете, что выбрать — можно позвонить нам или приехать в мастерскую для личного прослушивания.
-                        </p>
-                    </div>
-                    <div class="flex justify-start md:justify-end">
-                        <button onclick="switchTab('contacts')" class="bg-cardhover hover:bg-darkbg border border-bordercol text-white font-semibold text-xs px-5 py-3 rounded transition uppercase tracking-wider">
-                            Контакты и схема
-                        </button>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- CATALOG PAGE VIEW -->
-        <div id="view-catalog" class="view-section hidden max-w-7xl mx-auto px-4 md:px-8 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-4 border-b border-bordercol gap-4">
-                <div>
-                    <h1 class="font-heading font-black text-2xl md:text-3xl text-white uppercase tracking-wide">Интернет-магазин</h1>
-                    <p class="text-gray-400 text-xs mt-1">Инструменты и комплектующие в наличии и под заказ</p>
-                </div>
-                <!-- Filters Bar -->
-                <div class="flex flex-wrap items-center gap-2 text-xs">
-                    <select id="filter-category" onchange="applyFilters()" class="bg-cardbg border border-bordercol text-gray-300 rounded px-3 py-2 focus:outline-none focus:border-accentred">
-                        <option value="all">Все категории</option>
-                        <option value="Электрогитары">Электрогитары</option>
-                        <option value="Акустические гитары">Акустические гитары</option>
-                        <option value="Бас-гитары">Бас-гитары</option>
-                        <option value="Усилители">Комбоусилители</option>
-                        <option value="Педали эффектов">Педали эффектов</option>
-                        <option value="Аксессуары">Аксессуары</option>
-                    </select>
-                    <select id="filter-sort" onchange="applyFilters()" class="bg-cardbg border border-bordercol text-gray-300 rounded px-3 py-2 focus:outline-none focus:border-accentred">
-                        <option value="default">По умолчанию</option>
-                        <option value="price-asc">Цена: по возрастанию</option>
-                        <option value="price-desc">Цена: по убыванию</option>
-                    </select>
-                </div>
+      <div id="view-home" class="view-section">
+        <!-- HERO SECTION WITH IMMEDIATE CATEGORIES -->
+        <section
+          class="relative bg-cardbg border-b border-bordercol overflow-hidden py-8 md:py-12 px-4 md:px-8"
+        >
+          <div
+            class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-10"
+          >
+            <div class="md:col-span-7 space-y-4">
+              <div
+                class="inline-flex items-center space-x-2 bg-deepred/30 border border-accentred/40 px-2.5 py-1 rounded text-xs text-red-400 font-medium"
+              >
+                <span
+                  class="w-1.5 h-1.5 rounded-full bg-accentred animate-pulse"
+                ></span>
+                <span>Специализированный музыкальный склад-мастерская</span>
+              </div>
+              <h1
+                class="font-heading font-black text-3xl md:text-5xl uppercase tracking-tight text-white leading-none"
+              >
+                Гитары и<br />музыкальные<br /><span class="text-accentred"
+                  >инструменты</span
+                >
+              </h1>
+              <p class="text-gray-400 text-sm md:text-base max-w-lg font-light">
+                Гитары, комбоусилители, струны и аксессуары. Профессиональный
+                подбор, проверка каждого инструмента и честные цены без лишнего
+                пафоса.
+              </p>
+              <div class="pt-2 flex flex-wrap gap-3">
+                <button
+                  onclick="switchTab('catalog')"
+                  class="bg-accentred hover:bg-red-700 text-white font-semibold text-xs md:text-sm px-6 py-3 rounded transition shadow-lg shadow-red-900/30 uppercase tracking-wider flex items-center space-x-2"
+                >
+                  <span>Смотреть каталог</span>
+                  <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+                <button
+                  onclick="switchTab('contacts')"
+                  class="bg-cardbg hover:bg-cardhover border border-bordercol text-gray-300 hover:text-white font-semibold text-xs md:text-sm px-5 py-3 transition uppercase tracking-wider"
+                >
+                  Задать вопрос
+                </button>
+              </div>
             </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                <!-- Sidebar Filters -->
-                <div class="lg:col-span-1 space-y-6 bg-cardbg border border-bordercol p-4 rounded h-fit">
-                    <div>
-                        <h4 class="font-heading font-bold text-xs uppercase text-gray-300 tracking-wider mb-3">Категория</h4>
-                        <div id="sidebar-category-filters" class="space-y-1.5 text-xs text-gray-400">
-                            <!-- Populated dynamically -->
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-bordercol">
-                        <h4 class="font-heading font-bold text-xs uppercase text-gray-300 tracking-wider mb-3">Производитель</h4>
-                        <div id="brand-filters" class="space-y-2 text-xs text-gray-400">
-                            <!-- Populated dynamically -->
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-bordercol">
-                        <h4 class="font-heading font-bold text-xs uppercase text-gray-300 tracking-wider mb-3">Диапазон цены</h4>
-                        <div class="space-y-2 text-xs text-gray-400">
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="radio" name="price-range" value="all" checked onchange="applyFilters()" class="text-accentred bg-darkbg border-bordercol focus:ring-0">
-                                <span>Любая цена</span>
-                            </label>
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="radio" name="price-range" value="under-20k" onchange="applyFilters()" class="text-accentred bg-darkbg border-bordercol focus:ring-0">
-                                <span>До 20 000 ₽</span>
-                            </label>
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="radio" name="price-range" value="20k-50k" onchange="applyFilters()" class="text-accentred bg-darkbg border-bordercol focus:ring-0">
-                                <span>20 000 ₽ – 50 000 ₽</span>
-                            </label>
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="radio" name="price-range" value="over-50k" onchange="applyFilters()" class="text-accentred bg-darkbg border-bordercol focus:ring-0">
-                                <span>Более 50 000 ₽</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="pt-4 border-t border-bordercol">
-                        <h4 class="font-heading font-bold text-xs uppercase text-gray-300 tracking-wider mb-3">Статус наличия</h4>
-                        <label class="flex items-center space-x-2 text-xs text-gray-400 cursor-pointer">
-                            <input type="checkbox" id="filter-in-stock" onchange="applyFilters()" class="rounded bg-darkbg border-bordercol text-accentred focus:ring-0">
-                            <span>Только в наличии</span>
-                        </label>
-                    </div>
-                    <button onclick="resetFilters()" class="w-full bg-darkbg hover:bg-cardhover border border-bordercol text-gray-400 hover:text-white text-xs py-2 rounded transition">
-                        Сбросить фильтры
-                    </button>
+            <div class="md:col-span-5 relative flex justify-center">
+              <div
+                class="absolute -inset-1 bg-gradient-to-r from-accentred to-gold rounded-lg blur-sm opacity-30"
+              ></div>
+              <div
+                class="relative bg-darkbg border border-bordercol rounded-lg p-3 max-w-sm w-full"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?auto=format&fit=crop&w=600&q=80"
+                  alt="Электрогитара"
+                  class="rounded w-full h-60 object-cover filter brightness-90 contrast-110"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/400x400/141414/b91c1c?text=Guitar'
+                  "
+                />
+                <div
+                  class="mt-3 flex items-center justify-between text-xs border-t border-bordercol pt-2"
+                >
+                  <span class="text-gray-300 font-medium"
+                    >Fender Stratocaster HSS</span
+                  >
+                  <span class="text-accentred font-bold">89 500 ₽</span>
                 </div>
-
-                <!-- Products Grid -->
-                <div class="lg:col-span-3 space-y-6">
-                    <div id="catalog-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <!-- Populated dynamically -->
-                    </div>
-                    <!-- Load More / Pagination -->
-                    <div id="pagination-container" class="flex justify-center pt-6">
-                        <button onclick="loadMoreProducts()" id="load-more-btn" class="bg-cardbg hover:bg-cardhover border border-bordercol text-gray-300 font-semibold text-xs px-6 py-2.5 rounded transition uppercase tracking-wider">
-                            Показать ещё
-                        </button>
-                    </div>
-                </div>
+              </div>
             </div>
-        </div>
+          </div>
 
-        <!-- PRODUCT DETAIL VIEW -->
-        <div id="view-product" class="view-section hidden max-w-7xl mx-auto px-4 md:px-8 py-8">
-            <button onclick="goBackFromDetail()" class="text-xs text-gray-400 hover:text-accentred transition mb-6 flex items-center space-x-2">
-                <i class="fa-solid fa-arrow-left text-xs"></i>
-                <span>Назад к каталогу</span>
+          <!-- CATEGORIES ON FIRST SCREEN -->
+          <div class="max-w-7xl mx-auto pt-4 border-t border-bordercol/60">
+            <div class="flex items-center justify-between mb-4">
+              <h2
+                class="font-heading font-bold text-sm md:text-base text-white uppercase tracking-wider flex items-center space-x-2"
+              >
+                <span class="w-1.5 h-3 bg-accentred inline-block"></span>
+                <span>Выберите категорию на первом экране</span>
+              </h2>
+              <span class="text-xs text-gold font-medium"
+                >Быстрый переход в магазин</span
+              >
+            </div>
+            <div
+              id="categories-grid"
+              class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3"
+            >
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- NEW ARRIVALS (4 PRODUCTS) -->
+        <section class="max-w-7xl mx-auto px-4 md:px-8 py-10">
+          <div class="flex items-center justify-between mb-6">
+            <h2
+              class="font-heading font-bold text-lg md:text-xl text-white uppercase tracking-wider flex items-center space-x-2"
+            >
+              <span class="w-2 h-4 bg-accentred inline-block"></span>
+              <span>Новые поступления</span>
+            </h2>
+            <button
+              onclick="switchTab('catalog')"
+              class="text-xs text-accentred hover:underline font-medium"
+            >
+              Смотреть весь каталог →
             </button>
-            <div id="product-detail-content" class="bg-cardbg border border-bordercol rounded-lg p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          </div>
+          <div
+            id="home-products-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            <!-- Populated dynamically -->
+          </div>
+        </section>
+
+        <!-- ABOUT SNIPPET -->
+        <section
+          class="max-w-7xl mx-auto px-4 md:px-8 py-6 border-t border-bordercol mt-4"
+        >
+          <div
+            class="bg-cardbg border border-bordercol rounded-lg p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-center"
+          >
+            <div class="md:col-span-2 space-y-3">
+              <h3
+                class="font-heading font-bold text-base md:text-lg text-white"
+              >
+                Магазин музыкальных инструментов «Мелодия Гитар»
+              </h3>
+              <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
+                Гитары, комбоусилители, струны и аксессуары. Профессиональный
+                подход к каждому музыканту. Если не знаете, что выбрать — можно
+                позвонить нам или приехать в мастерскую для личного
+                прослушивания.
+              </p>
+            </div>
+            <div class="flex justify-start md:justify-end">
+              <button
+                onclick="switchTab('contacts')"
+                class="bg-cardhover hover:bg-darkbg border border-bordercol text-white font-semibold text-xs px-5 py-3 rounded transition uppercase tracking-wider"
+              >
+                Контакты и схема
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- CATALOG PAGE VIEW -->
+      <div
+        id="view-catalog"
+        class="view-section hidden max-w-7xl mx-auto px-4 md:px-8 py-8"
+      >
+        <div
+          class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 pb-4 border-b border-bordercol gap-4"
+        >
+          <div>
+            <h1
+              class="font-heading font-black text-2xl md:text-3xl text-white uppercase tracking-wide"
+            >
+              Интернет-магазин
+            </h1>
+            <p class="text-gray-400 text-xs mt-1">
+              Инструменты и комплектующие в наличии и под заказ
+            </p>
+          </div>
+          <!-- Filters Bar -->
+          <div class="flex flex-wrap items-center gap-2 text-xs">
+            <select
+              id="filter-category"
+              onchange="applyFilters()"
+              class="bg-cardbg border border-bordercol text-gray-300 rounded px-3 py-2 focus:outline-none focus:border-accentred"
+            >
+              <option value="all">Все категории</option>
+              <option value="Электрогитары">Электрогитары</option>
+              <option value="Акустические гитары">Акустические гитары</option>
+              <option value="Бас-гитары">Бас-гитары</option>
+              <option value="Усилители">Комбоусилители</option>
+              <option value="Педали эффектов">Педали эффектов</option>
+              <option value="Аксессуары">Аксессуары</option>
+            </select>
+            <select
+              id="filter-sort"
+              onchange="applyFilters()"
+              class="bg-cardbg border border-bordercol text-gray-300 rounded px-3 py-2 focus:outline-none focus:border-accentred"
+            >
+              <option value="default">По умолчанию</option>
+              <option value="price-asc">Цена: по возрастанию</option>
+              <option value="price-desc">Цена: по убыванию</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <!-- Sidebar Filters -->
+          <div
+            class="lg:col-span-1 space-y-6 bg-cardbg border border-bordercol p-4 rounded h-fit"
+          >
+            <div>
+              <h4
+                class="font-heading font-bold text-xs uppercase text-gray-300 tracking-wider mb-3"
+              >
+                Категория
+              </h4>
+              <div
+                id="sidebar-category-filters"
+                class="space-y-1.5 text-xs text-gray-400"
+              >
                 <!-- Populated dynamically -->
+              </div>
             </div>
-        </div>
+            <div class="pt-4 border-t border-bordercol">
+              <h4
+                class="font-heading font-bold text-xs uppercase text-gray-300 tracking-wider mb-3"
+              >
+                Производитель
+              </h4>
+              <div id="brand-filters" class="space-y-2 text-xs text-gray-400">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+            <div class="pt-4 border-t border-bordercol">
+              <h4
+                class="font-heading font-bold text-xs uppercase text-gray-300 tracking-wider mb-3"
+              >
+                Диапазон цены
+              </h4>
+              <div class="space-y-2 text-xs text-gray-400">
+                <label class="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="price-range"
+                    value="all"
+                    checked
+                    onchange="applyFilters()"
+                    class="text-accentred bg-darkbg border-bordercol focus:ring-0"
+                  />
+                  <span>Любая цена</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="price-range"
+                    value="under-20k"
+                    onchange="applyFilters()"
+                    class="text-accentred bg-darkbg border-bordercol focus:ring-0"
+                  />
+                  <span>До 20 000 ₽</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="price-range"
+                    value="20k-50k"
+                    onchange="applyFilters()"
+                    class="text-accentred bg-darkbg border-bordercol focus:ring-0"
+                  />
+                  <span>20 000 ₽ – 50 000 ₽</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="price-range"
+                    value="over-50k"
+                    onchange="applyFilters()"
+                    class="text-accentred bg-darkbg border-bordercol focus:ring-0"
+                  />
+                  <span>Более 50 000 ₽</span>
+                </label>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-bordercol">
+              <h4
+                class="font-heading font-bold text-xs uppercase text-gray-300 tracking-wider mb-3"
+              >
+                Статус наличия
+              </h4>
+              <label
+                class="flex items-center space-x-2 text-xs text-gray-400 cursor-pointer"
+              >
+                <input
+                  type="checkbox"
+                  id="filter-in-stock"
+                  onchange="applyFilters()"
+                  class="rounded bg-darkbg border-bordercol text-accentred focus:ring-0"
+                />
+                <span>Только в наличии</span>
+              </label>
+            </div>
+            <button
+              onclick="resetFilters()"
+              class="w-full bg-darkbg hover:bg-cardhover border border-bordercol text-gray-400 hover:text-white text-xs py-2 rounded transition"
+            >
+              Сбросить фильтры
+            </button>
+          </div>
 
-        <!-- ABOUT PAGE VIEW -->
-        <div id="view-about" class="view-section hidden max-w-4xl mx-auto px-4 md:px-8 py-12 space-y-8">
-            <div class="border-b border-bordercol pb-4">
-                <h1 class="font-heading font-black text-2xl md:text-3xl text-white uppercase tracking-wide">О магазине</h1>
-                <p class="text-gray-400 text-xs mt-1">«Мелодия Гитар» — специализированный музыкальный магазин</p>
+          <!-- Products Grid -->
+          <div class="lg:col-span-3 space-y-6">
+            <div
+              id="catalog-products-grid"
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
+              <!-- Populated dynamically -->
             </div>
-            <div class="space-y-4 text-sm text-gray-300 leading-relaxed font-light">
-                <p>
-                    Магазин музыкальных инструментов «Мелодия Гитар» работает для тех, кто понимает толк в качественном звуке. Мы не крупный безликий сетевой маркетплейс — мы компактная команда музыкантов и мастеров, которые лично проверяют каждый инструмент, отстраивают анкеры, мензуру и проверяют электронику перед выдачей клиенту.
+            <!-- Load More / Pagination -->
+            <div id="pagination-container" class="flex justify-center pt-6">
+              <button
+                onclick="loadMoreProducts()"
+                id="load-more-btn"
+                class="bg-cardbg hover:bg-cardhover border border-bordercol text-gray-300 font-semibold text-xs px-6 py-2.5 rounded transition uppercase tracking-wider"
+              >
+                Показать ещё
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT DETAIL VIEW -->
+      <div
+        id="view-product"
+        class="view-section hidden max-w-7xl mx-auto px-4 md:px-8 py-8"
+      >
+        <button
+          onclick="goBackFromDetail()"
+          class="text-xs text-gray-400 hover:text-accentred transition mb-6 flex items-center space-x-2"
+        >
+          <i class="fa-solid fa-arrow-left text-xs"></i>
+          <span>Назад к каталогу</span>
+        </button>
+        <div
+          id="product-detail-content"
+          class="bg-cardbg border border-bordercol rounded-lg p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- ABOUT PAGE VIEW -->
+      <div
+        id="view-about"
+        class="view-section hidden max-w-4xl mx-auto px-4 md:px-8 py-12 space-y-8"
+      >
+        <div class="border-b border-bordercol pb-4">
+          <h1
+            class="font-heading font-black text-2xl md:text-3xl text-white uppercase tracking-wide"
+          >
+            О магазине
+          </h1>
+          <p class="text-gray-400 text-xs mt-1">
+            «Мелодия Гитар» — специализированный музыкальный магазин
+          </p>
+        </div>
+        <div class="space-y-4 text-sm text-gray-300 leading-relaxed font-light">
+          <p>
+            Магазин музыкальных инструментов «Мелодия Гитар» работает для тех,
+            кто понимает толк в качественном звуке. Мы не крупный безликий
+            сетевой маркетплейс — мы компактная команда музыкантов и мастеров,
+            которые лично проверяют каждый инструмент, отстраивают анкеры,
+            мензуру и проверяют электронику перед выдачей клиенту.
+          </p>
+          <p>
+            В нашем каталоге представлены электрогитары, акустические и
+            классические модели, надежные бас-гитары, гитарные комбоусилители,
+            педали перегруза и эффектов, а также необходимые расходники: струны,
+            кабели, медиаторы и чехлы.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+            <div
+              class="bg-cardbg border border-bordercol p-4 rounded text-center"
+            >
+              <div class="text-accentred font-bold text-lg mb-1">100%</div>
+              <div class="text-xs text-gray-400">
+                Проверка каждого инструмента перед продажей
+              </div>
+            </div>
+            <div
+              class="bg-cardbg border border-bordercol p-4 rounded text-center"
+            >
+              <div class="text-accentred font-bold text-lg mb-1">Гарантия</div>
+              <div class="text-xs text-gray-400">
+                Официальная гарантия и сервисное обслуживание
+              </div>
+            </div>
+            <div
+              class="bg-cardbg border border-bordercol p-4 rounded text-center"
+            >
+              <div class="text-accentred font-bold text-lg mb-1">
+                Экспертиза
+              </div>
+              <div class="text-xs text-gray-400">
+                Помощь музыкантов при выборе железа
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pt-4 flex gap-4">
+          <button
+            onclick="switchTab('catalog')"
+            class="bg-accentred hover:bg-red-700 text-white font-semibold text-xs px-6 py-3 rounded transition uppercase tracking-wider"
+          >
+            Перейти в каталог
+          </button>
+          <button
+            onclick="switchTab('contacts')"
+            class="bg-cardbg hover:bg-cardhover border border-bordercol text-gray-200 font-semibold text-xs px-6 py-3 rounded transition uppercase tracking-wider"
+          >
+            Связаться с нами
+          </button>
+        </div>
+      </div>
+
+      <!-- CONTACTS PAGE VIEW -->
+      <div
+        id="view-contacts"
+        class="view-section hidden max-w-4xl mx-auto px-4 md:px-8 py-12 space-y-8"
+      >
+        <div class="border-b border-bordercol pb-4">
+          <h1
+            class="font-heading font-black text-2xl md:text-3xl text-white uppercase tracking-wide"
+          >
+            Контакты
+          </h1>
+          <p class="text-gray-400 text-xs mt-1">
+            Ждем вас в нашем магазине и мастерской
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="space-y-6 bg-cardbg border border-bordercol p-6 rounded">
+            <div>
+              <h3
+                class="font-heading font-bold text-sm text-white uppercase mb-1"
+              >
+                Телефоны
+              </h3>
+              <div class="flex items-center gap-2">
+                <p class="text-gray-300 text-sm font-medium">
+                  +7 949 710 62 63
                 </p>
-                <p>
-                    В нашем каталоге представлены электрогитары, акустические и классические модели, надежные бас-гитары, гитарные комбоусилители, педали перегруза и эффектов, а также необходимые расходники: струны, кабели, медиаторы и чехлы.
+                <button
+                  type="button"
+                  onclick="copyPhone('+79497106263')"
+                  class="text-[10px] text-gray-500 hover:text-accentred transition"
+                  title="Копировать номер"
+                  aria-label="Копировать номер +7 949 710 62 63"
+                >
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+              <div class="flex items-center gap-2">
+                <p class="text-gray-300 text-sm font-medium">
+                  +7 949 700 95 12
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-                    <div class="bg-cardbg border border-bordercol p-4 rounded text-center">
-                        <div class="text-accentred font-bold text-lg mb-1">100%</div>
-                        <div class="text-xs text-gray-400">Проверка каждого инструмента перед продажей</div>
-                    </div>
-                    <div class="bg-cardbg border border-bordercol p-4 rounded text-center">
-                        <div class="text-accentred font-bold text-lg mb-1">Гарантия</div>
-                        <div class="text-xs text-gray-400">Официальная гарантия и сервисное обслуживание</div>
-                    </div>
-                    <div class="bg-cardbg border border-bordercol p-4 rounded text-center">
-                        <div class="text-accentred font-bold text-lg mb-1">Экспертиза</div>
-                        <div class="text-xs text-gray-400">Помощь музыкантов при выборе железа</div>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-4 flex gap-4">
-                <button onclick="switchTab('catalog')" class="bg-accentred hover:bg-red-700 text-white font-semibold text-xs px-6 py-3 rounded transition uppercase tracking-wider">
-                    Перейти в каталог
+                <button
+                  type="button"
+                  onclick="copyPhone('+79497009512')"
+                  class="text-[10px] text-gray-500 hover:text-accentred transition"
+                  title="Копировать номер"
+                  aria-label="Копировать номер +7 949 700 95 12"
+                >
+                  <i class="fa-regular fa-copy"></i>
                 </button>
-                <button onclick="switchTab('contacts')" class="bg-cardbg hover:bg-cardhover border border-bordercol text-gray-200 font-semibold text-xs px-6 py-3 rounded transition uppercase tracking-wider">
-                    Связаться с нами
-                </button>
+              </div>
             </div>
+            <div>
+              <h3
+                class="font-heading font-bold text-sm text-white uppercase mb-1"
+              >
+                Адрес
+              </h3>
+              <p class="text-gray-400 text-xs leading-relaxed">
+                г. Донецк, ул. Артема, 130 (цокольный этаж, вывеска «Мелодия
+                Гитар»)
+              </p>
+            </div>
+            <div>
+              <h3
+                class="font-heading font-bold text-sm text-white uppercase mb-1"
+              >
+                Режим работы
+              </h3>
+              <p class="text-gray-400 text-xs">
+                Пн–Сб: с 10:00 до 19:00<br />Вс: с 11:00 до 17:00
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-cardbg border border-bordercol p-6 rounded flex flex-col justify-between"
+          >
+            <div class="space-y-3">
+              <h3 class="font-heading font-bold text-sm text-white uppercase">
+                Есть вопросы по выбору?
+              </h3>
+              <p class="text-gray-400 text-xs">
+                Если не знаете, какая гитара или педаль подойдет под ваш стиль —
+                позвоните нам или напишите в мессенджеры. Мы поможем
+                определиться.
+              </p>
+            </div>
+            <div class="pt-6">
+              <a
+                href="tel:+79497106263"
+                class="block w-full text-center bg-accentred hover:bg-red-700 text-white font-semibold text-xs py-3 rounded transition uppercase tracking-wider"
+              >
+                Позвонить нам
+              </a>
+            </div>
+          </div>
         </div>
-
-        <!-- CONTACTS PAGE VIEW -->
-        <div id="view-contacts" class="view-section hidden max-w-4xl mx-auto px-4 md:px-8 py-12 space-y-8">
-            <div class="border-b border-bordercol pb-4">
-                <h1 class="font-heading font-black text-2xl md:text-3xl text-white uppercase tracking-wide">Контакты</h1>
-                <p class="text-gray-400 text-xs mt-1">Ждем вас в нашем магазине и мастерской</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-6 bg-cardbg border border-bordercol p-6 rounded">
-                    <div>
-                        <h3 class="font-heading font-bold text-sm text-white uppercase mb-1">Телефоны</h3>
-                        <div class="flex items-center gap-2">
-                            <p class="text-gray-300 text-sm font-medium">+7 949 710 62 63</p>
-                            <button type="button" onclick="copyPhone('+79497106263')" class="text-[10px] text-gray-500 hover:text-accentred transition" title="Копировать номер" aria-label="Копировать номер +7 949 710 62 63"><i class="fa-regular fa-copy"></i></button>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <p class="text-gray-300 text-sm font-medium">+7 949 700 95 12</p>
-                            <button type="button" onclick="copyPhone('+79497009512')" class="text-[10px] text-gray-500 hover:text-accentred transition" title="Копировать номер" aria-label="Копировать номер +7 949 700 95 12"><i class="fa-regular fa-copy"></i></button>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="font-heading font-bold text-sm text-white uppercase mb-1">Адрес</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">г. Донецк, ул. Артема, 130 (цокольный этаж, вывеска «Мелодия Гитар»)</p>
-                    </div>
-                    <div>
-                        <h3 class="font-heading font-bold text-sm text-white uppercase mb-1">Режим работы</h3>
-                        <p class="text-gray-400 text-xs">Пн–Сб: с 10:00 до 19:00<br>Вс: с 11:00 до 17:00</p>
-                    </div>
-                </div>
-                <div class="bg-cardbg border border-bordercol p-6 rounded flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <h3 class="font-heading font-bold text-sm text-white uppercase">Есть вопросы по выбору?</h3>
-                        <p class="text-gray-400 text-xs">Если не знаете, какая гитара или педаль подойдет под ваш стиль — позвоните нам или напишите в мессенджеры. Мы поможем определиться.</p>
-                    </div>
-                    <div class="pt-6">
-                        <a href="tel:+79497106263" class="block w-full text-center bg-accentred hover:bg-red-700 text-white font-semibold text-xs py-3 rounded transition uppercase tracking-wider">
-                            Позвонить нам
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+      </div>
     </main>
 
     <!-- SIDEBAR CART DRAWER -->
     <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
-        <div onclick="toggleCart()" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
-        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
-            <div class="w-screen max-w-md bg-cardbg border-l border-bordercol flex flex-col shadow-2xl">
-                <!-- Cart Header -->
-                <div class="p-4 border-b border-bordercol flex items-center justify-between bg-darkbg">
-                    <div class="flex items-center space-x-2">
-                        <i class="fa-solid fa-cart-shopping text-accentred text-sm"></i>
-                        <h2 class="font-heading font-bold text-sm uppercase text-white tracking-wider">Корзина товаров</h2>
-                    </div>
-                    <button onclick="toggleCart()" class="text-gray-400 hover:text-white p-1">
-                        <i class="fa-solid fa-xmark text-lg"></i>
-                    </button>
-                </div>
-                <!-- Cart Items List -->
-                <div id="cart-items-container" class="flex-1 overflow-y-auto p-4 space-y-4 divide-y divide-bordercol/50">
-                    <!-- Populated dynamically -->
-                </div>
-                <!-- Cart Footer -->
-                <div class="p-4 border-t border-bordercol bg-darkbg space-y-3">
-                    <input id="customer-name" type="text" maxlength="100" placeholder="Ваше имя" class="w-full bg-cardbg border border-bordercol rounded text-xs px-3 py-2 text-gray-200 focus:outline-none focus:border-accentred">
-                    <input id="customer-phone" type="tel" maxlength="30" placeholder="Телефон, например +7 949 123-45-67" class="w-full bg-cardbg border border-bordercol rounded text-xs px-3 py-2 text-gray-200 focus:outline-none focus:border-accentred">
-                    <div class="flex justify-between items-center text-sm font-bold text-white">
-                        <span>Итого:</span>
-                        <span id="cart-total-price" class="text-accentred text-base">0 ₽</span>
-                    </div>
-                    <button onclick="checkoutOrder()" class="w-full bg-accentred hover:bg-red-700 text-white font-semibold text-xs py-3 rounded transition uppercase tracking-wider shadow-lg shadow-red-900/30">
-                        Оформить заказ
-                    </button>
-                </div>
+      <div
+        onclick="toggleCart()"
+        class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
+      ></div>
+      <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+        <div
+          class="w-screen max-w-md bg-cardbg border-l border-bordercol flex flex-col shadow-2xl"
+        >
+          <!-- Cart Header -->
+          <div
+            class="p-4 border-b border-bordercol flex items-center justify-between bg-darkbg"
+          >
+            <div class="flex items-center space-x-2">
+              <i class="fa-solid fa-cart-shopping text-accentred text-sm"></i>
+              <h2
+                class="font-heading font-bold text-sm uppercase text-white tracking-wider"
+              >
+                Корзина товаров
+              </h2>
             </div>
+            <button
+              onclick="toggleCart()"
+              class="text-gray-400 hover:text-white p-1"
+            >
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+          <!-- Cart Items List -->
+          <div
+            id="cart-items-container"
+            class="flex-1 overflow-y-auto p-4 space-y-4 divide-y divide-bordercol/50"
+          >
+            <!-- Populated dynamically -->
+          </div>
+          <!-- Cart Footer -->
+          <div class="p-4 border-t border-bordercol bg-darkbg space-y-3">
+            <input
+              id="customer-name"
+              type="text"
+              maxlength="100"
+              placeholder="Ваше имя"
+              class="w-full bg-cardbg border border-bordercol rounded text-xs px-3 py-2 text-gray-200 focus:outline-none focus:border-accentred"
+            />
+            <input
+              id="customer-phone"
+              type="tel"
+              maxlength="30"
+              placeholder="Телефон, например +7 949 123-45-67"
+              class="w-full bg-cardbg border border-bordercol rounded text-xs px-3 py-2 text-gray-200 focus:outline-none focus:border-accentred"
+            />
+            <div
+              class="flex justify-between items-center text-sm font-bold text-white"
+            >
+              <span>Итого:</span>
+              <span id="cart-total-price" class="text-accentred text-base"
+                >0 ₽</span
+              >
+            </div>
+            <button
+              onclick="checkoutOrder()"
+              class="w-full bg-accentred hover:bg-red-700 text-white font-semibold text-xs py-3 rounded transition uppercase tracking-wider shadow-lg shadow-red-900/30"
+            >
+              Оформить заказ
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- FOOTER -->
     <footer class="bg-cardbg border-t border-bordercol mt-12 py-8 px-4 md:px-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-            <div class="space-y-1">
-                <span class="font-heading font-black text-base text-white tracking-wider">МЕЛОДИЯ ГИТАР</span>
-                <p class="text-gray-400 text-xs">Музыкальные инструменты и комплектующие</p>
-            </div>
-            <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-400 justify-start md:justify-center">
-                <a href="#" onclick="switchTab('home')" class="hover:text-accentred transition">Главная</a>
-                <a href="#" onclick="switchTab('catalog')" class="hover:text-accentred transition">Каталог</a>
-                <a href="#" onclick="switchTab('catalog', 'Электрогитары')" class="hover:text-accentred transition">Гитары</a>
-                <a href="#" onclick="switchTab('catalog', 'Аксессуары')" class="hover:text-accentred transition">Аксессуары</a>
-                <a href="#" onclick="switchTab('about')" class="hover:text-accentred transition">О магазине</a>
-                <a href="#" onclick="switchTab('contacts')" class="hover:text-accentred transition">Контакты</a>
-            </div>
-            <div class="text-left md:text-right text-xs text-gray-400 space-y-1">
-                <p class="font-medium text-gray-300">+7 949 710 62 63</p>
-                <p class="font-medium text-gray-300">+7 949 700 95 12</p>
-            </div>
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-center"
+      >
+        <div class="space-y-1">
+          <span
+            class="font-heading font-black text-base text-white tracking-wider"
+            >МЕЛОДИЯ ГИТАР</span
+          >
+          <p class="text-gray-400 text-xs">
+            Музыкальные инструменты и комплектующие
+          </p>
         </div>
-        <!-- Bottom red accent stripe inspired by reference -->
-        <div class="max-w-7xl mx-auto mt-6 pt-4 border-t border-bordercol flex flex-col sm:flex-row justify-between items-center text-[10px] text-gray-500">
-            <span>© 2026 Мелодия Гитар. Все права защищены.</span>
-            <span class="text-accentred font-semibold tracking-wider uppercase mt-2 sm:mt-0">Специализированный гитарный магазин</span>
+        <div
+          class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-400 justify-start md:justify-center"
+        >
+          <a
+            href="#"
+            onclick="switchTab('home')"
+            class="hover:text-accentred transition"
+            >Главная</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('catalog')"
+            class="hover:text-accentred transition"
+            >Каталог</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('catalog', 'Электрогитары')"
+            class="hover:text-accentred transition"
+            >Гитары</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('catalog', 'Аксессуары')"
+            class="hover:text-accentred transition"
+            >Аксессуары</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('about')"
+            class="hover:text-accentred transition"
+            >О магазине</a
+          >
+          <a
+            href="#"
+            onclick="switchTab('contacts')"
+            class="hover:text-accentred transition"
+            >Контакты</a
+          >
         </div>
+        <div class="text-left md:text-right text-xs text-gray-400 space-y-1">
+          <p class="font-medium text-gray-300">+7 949 710 62 63</p>
+          <p class="font-medium text-gray-300">+7 949 700 95 12</p>
+        </div>
+      </div>
+      <!-- Bottom red accent stripe inspired by reference -->
+      <div
+        class="max-w-7xl mx-auto mt-6 pt-4 border-t border-bordercol flex flex-col sm:flex-row justify-between items-center text-[10px] text-gray-500"
+      >
+        <span>© 2026 Мелодия Гитар. Все права защищены.</span>
+        <span
+          class="text-accentred font-semibold tracking-wider uppercase mt-2 sm:mt-0"
+          >Специализированный гитарный магазин</span
+        >
+      </div>
     </footer>
-<!--pp-->>
+    <!--pp-->>
     <script src="/static/js/shop.js" defer></script>
-
-</body>
+  </body>
 </html>
