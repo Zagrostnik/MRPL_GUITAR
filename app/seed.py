@@ -10,7 +10,7 @@ CATEGORIES = [
     ("elektrogitary", "Электрогитары", "fa-guitar", "1564186763535-ebb21ef5277f"),
     ("akusticheskie-gitary", "Акустические гитары", "fa-music", "1510915361894-db8b60106cb1"),
     ("bas-gitary", "Бас-гитары", "fa-sliders", "1563379091339-03b21ab4a4f8"),
-    ("usiliteli", "Усилители", "fa-volume-high", "1543852786-1cf6624b9987"),
+    ("usiliteli", "Комбоусилители", "fa-volume-high", "1543852786-1cf6624b9987"),
     ("pedali-effektov", "Педали эффектов", "fa-bolt", "1598488035139-bdbb2231ce04"),
     ("aksessuary", "Аксессуары", "fa-box-archive", "1525201548942-d8732f6617a0"),
 ]
