@@ -52,6 +52,26 @@ PRODUCTS = [
 ]
 
 
+def normalize_category_names(db: Session) -> None:
+    """Нормализует названия категорий в уже существующей БД.
+
+    Нужен для обновления старых баз, где категория ещё называлась
+    «Усилители». Новые базы сразу получают «Комбоусилители» из CATEGORIES.
+    """
+    changed = False
+    categories = db.scalars(
+        select(Category).where(
+            (Category.slug == "usiliteli") | (Category.name == "Усилители")
+        )
+    ).all()
+    for category in categories:
+        if category.name != "Комбоусилители":
+            category.name = "Комбоусилители"
+            changed = True
+    if changed:
+        db.commit()
+
+
 def seed_if_empty(db: Session) -> None:
     """Заполняет пустую БД категориями и товарами из исходного макета."""
     if db.scalar(select(func.count()).select_from(Category)):
