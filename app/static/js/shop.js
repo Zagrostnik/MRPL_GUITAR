@@ -62,13 +62,7 @@ async function fetchFilteredProducts({ resetCount = true } = {}) {
     const q = document.getElementById("global-search")?.value.trim() || "";
 
     const catMap = categoryByName();
-    const sidebarChecked = Array.from(document.querySelectorAll(".sidebar-cat-checkbox:checked"))
-        .map(cb => cb.value)
-        .filter(v => v !== "all");
-
-    const categories = categorySelect !== "all"
-        ? [categorySelect]
-        : sidebarChecked.length ? sidebarChecked : [];
+    const categories = categorySelect !== "all" ? [categorySelect] : [];
 
     categories.forEach(name => {
         const cat = catMap[name];
@@ -120,36 +114,42 @@ function renderSidebarCategories() {
     const container = document.getElementById("sidebar-category-filters");
     if (!container) return;
     container.innerHTML = `
-        <label class="flex items-center space-x-2 cursor-pointer hover:text-white transition">
-            <input type="checkbox" value="all" checked onchange="handleSidebarCategoryChange(this)" class="sidebar-cat-checkbox rounded bg-darkbg border-bordercol text-accentred focus:ring-0">
-            <span>Все категории</span>
-        </label>
+        <button type="button" class="catalog-category-button selected" data-category="all" onclick="selectCatalogCategory('all')">
+            <span>Все категории</span><i class="fa-solid fa-check text-[10px] text-accentred"></i>
+        </button>
     ` + categoriesList.map(c => `
-        <label class="flex items-center space-x-2 cursor-pointer hover:text-white transition">
-            <input type="checkbox" value="${escapeHtml(c.name)}" onchange="handleSidebarCategoryChange(this)" class="sidebar-cat-checkbox rounded bg-darkbg border-bordercol text-accentred focus:ring-0">
-            <span>${escapeHtml(c.name)}</span>
-        </label>
+        <button type="button" class="catalog-category-button" data-category="${escapeHtml(c.name)}" onclick="selectCatalogCategory('${escapeHtml(c.name)}')">
+            <span>${escapeHtml(c.name)}</span><i class="fa-solid fa-chevron-right text-[9px] opacity-50"></i>
+        </button>
     `).join("");
 }
 
-function handleSidebarCategoryChange(checkbox) {
-    const all = document.querySelector(".sidebar-cat-checkbox[value='all']");
-    if (checkbox.value === "all") {
-        if (checkbox.checked) {
-            document.querySelectorAll(".sidebar-cat-checkbox:not([value='all'])").forEach(cb => cb.checked = false);
-            document.getElementById("filter-category").value = "all";
+function selectCatalogCategory(category) {
+    document.getElementById("filter-category").value = category;
+    document.querySelectorAll(".catalog-category-button").forEach(btn => {
+        const selected = btn.dataset.category === category;
+        btn.classList.toggle("selected", selected);
+        const icon = btn.querySelector("i");
+        if (icon) {
+            icon.className = selected
+                ? "fa-solid fa-check text-[10px] text-accentred"
+                : "fa-solid fa-chevron-right text-[9px] opacity-50";
         }
-    } else {
-        if (all) all.checked = false;
-        const checked = Array.from(document.querySelectorAll(".sidebar-cat-checkbox:checked"));
-        document.getElementById("filter-category").value = checked.length === 1 ? checked[0].value : "all";
-        if (checked.length === 0 && all) all.checked = true;
-    }
+    });
     applyFilters();
+}
+
+function handleSidebarCategoryChange(checkbox) {
+    selectCatalogCategory(checkbox.value);
 }
 
 function switchTab(tabId, categoryParam = null) {
     document.querySelectorAll(".view-section").forEach(el => el.classList.add("hidden"));
+    document.querySelectorAll(".nav-link").forEach(el => el.classList.remove("active"));
+    const activeNavId = tabId === "catalog"
+        ? (categoryParam === "Электрогитары" ? "nav-guitars" : categoryParam === "Аксессуары" ? "nav-accessories" : "nav-catalog")
+        : `nav-${tabId}`;
+    document.getElementById(activeNavId)?.classList.add("active");
 
     if (tabId === "home") {
         document.getElementById("view-home")?.classList.remove("hidden");
@@ -159,7 +159,7 @@ function switchTab(tabId, categoryParam = null) {
         currentTab = "catalog";
         if (categoryParam) {
             document.getElementById("filter-category").value = categoryParam;
-            document.querySelectorAll(".sidebar-cat-checkbox").forEach(cb => cb.checked = cb.value === categoryParam);
+            document.querySelectorAll(".catalog-category-button").forEach(btn => btn.classList.toggle("selected", btn.dataset.category === categoryParam));
         }
         applyFilters();
     } else if (["about", "contacts", "product"].includes(tabId)) {
@@ -232,7 +232,12 @@ function resetFilters() {
     document.getElementById("filter-sort").value = "default";
     document.getElementById("filter-in-stock").checked = false;
     document.querySelectorAll(".brand-checkbox").forEach(cb => cb.checked = false);
-    document.querySelectorAll(".sidebar-cat-checkbox").forEach(cb => cb.checked = cb.value === "all");
+    document.querySelectorAll(".catalog-category-button").forEach(btn => {
+        const selected = btn.dataset.category === "all";
+        btn.classList.toggle("selected", selected);
+        const icon = btn.querySelector("i");
+        if (icon) icon.className = selected ? "fa-solid fa-check text-[10px] text-accentred" : "fa-solid fa-chevron-right text-[9px] opacity-50";
+    });
     const allPrice = document.querySelector("input[name='price-range'][value='all']");
     if (allPrice) allPrice.checked = true;
     document.getElementById("global-search").value = "";
@@ -390,6 +395,21 @@ function showNotification(message, isError = false) {
     notif.innerHTML = `<i class="fa-solid ${isError ? "fa-circle-exclamation text-red-400" : "fa-circle-check text-accentred"}"></i><span>${escapeHtml(message)}</span>`;
     document.body.appendChild(notif);
     setTimeout(() => notif.remove(), 3500);
+}
+
+async function copyPhone(phone) {
+    try {
+        await navigator.clipboard.writeText(phone);
+        showNotification("Номер скопирован");
+    } catch (_) {
+        const input = document.createElement("textarea");
+        input.value = phone;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+        showNotification("Номер скопирован");
+    }
 }
 
 function toggleMobileMenu() {

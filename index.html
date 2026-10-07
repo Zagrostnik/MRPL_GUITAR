@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>МЕЛОДИЯ ГИТАР — Магазин музыкальных инструментов</title>
+    <title>Мелодия Гитар — Мелодия гитар в Мариуполе</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -58,6 +58,40 @@
         .red-line-bottom {
             position: relative;
         }
+        .nav-link.active {
+            color: #f5f5f5;
+            border: 1px solid #b91c1c;
+            box-shadow: 0 0 12px rgba(185, 28, 28, 0.18);
+            background: rgba(185, 28, 28, 0.08);
+            border-radius: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .catalog-category-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #262626;
+            border-radius: 5px;
+            background: #0a0a0a;
+            color: #9ca3af;
+            transition: all .18s ease;
+            text-align: left;
+        }
+        .catalog-category-button:hover {
+            border-color: #7f1d1d;
+            color: #f5f5f5;
+            background: #141414;
+        }
+        .catalog-category-button.selected {
+            border-color: #b91c1c;
+            color: #fff;
+            background: rgba(127, 29, 29, .18);
+            box-shadow: inset 2px 0 0 #b91c1c;
+        }
+
         .red-line-bottom::after {
             content: '';
             position: absolute;
@@ -76,15 +110,16 @@
             <!-- Logo -->
             <a href="#" onclick="switchTab('home')" class="flex flex-col group cursor-pointer">
                 <span class="font-heading font-black text-lg md:text-xl tracking-wider text-accentred group-hover:text-red-500 transition">МЕЛОДИЯ</span>
-                <span class="text-xs font-semibold tracking-widest text-gray-300 uppercase -mt-1">ГИТАРЫ</span>
+                <span class="text-xs font-semibold tracking-widest text-gray-300 uppercase -mt-1">ГИТАР</span>
+                <span class="text-[8px] md:text-[9px] text-gray-500 tracking-wide mt-0.5">Мелодия гитар в Мариуполе</span>
             </a>
 
             <!-- Navigation Links (Desktop) -->
             <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
                 <a href="#" onclick="switchTab('home')" id="nav-home" class="nav-link text-white hover:text-accentred transition py-1 relative">Главная</a>
                 <a href="#" onclick="switchTab('catalog')" id="nav-catalog" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Каталог</a>
-                <a href="#" onclick="switchTab('catalog', 'Электрогитары')" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Гитары</a>
-                <a href="#" onclick="switchTab('catalog', 'Аксессуары')" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Аксессуары</a>
+                <a href="#" onclick="switchTab('catalog', 'Электрогитары')" id="nav-guitars" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Гитары</a>
+                <a href="#" onclick="switchTab('catalog', 'Аксессуары')" id="nav-accessories" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Аксессуары</a>
                 <a href="#" onclick="switchTab('about')" id="nav-about" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">О магазине</a>
                 <a href="#" onclick="switchTab('contacts')" id="nav-contacts" class="nav-link text-gray-400 hover:text-accentred transition py-1 relative">Контакты</a>
             </nav>
@@ -135,7 +170,7 @@
                             Гитары и<br>музыкальные<br><span class="text-accentred">инструменты</span>
                         </h1>
                         <p class="text-gray-400 text-sm md:text-base max-w-lg font-light">
-                            Гитары, усилители, струны и аксессуары. Профессиональный подбор, проверка каждого инструмента и честные цены без лишнего пафоса.
+                            Гитары, комбоусилители, струны и аксессуары. Профессиональный подбор, проверка каждого инструмента и честные цены без лишнего пафоса.
                         </p>
                         <div class="pt-2 flex flex-wrap gap-3">
                             <button onclick="switchTab('catalog')" class="bg-accentred hover:bg-red-700 text-white font-semibold text-xs md:text-sm px-6 py-3 rounded transition shadow-lg shadow-red-900/30 uppercase tracking-wider flex items-center space-x-2">
@@ -194,7 +229,7 @@
                     <div class="md:col-span-2 space-y-3">
                         <h3 class="font-heading font-bold text-base md:text-lg text-white">Магазин музыкальных инструментов «Мелодия Гитар»</h3>
                         <p class="text-gray-400 text-xs md:text-sm leading-relaxed">
-                            Гитары, усилители, струны и аксессуары. Профессиональный подход к каждому музыканту. Если не знаете, что выбрать — можно позвонить нам или приехать в мастерскую для личного прослушивания.
+                            Гитары, комбоусилители, струны и аксессуары. Профессиональный подход к каждому музыканту. Если не знаете, что выбрать — можно позвонить нам или приехать в мастерскую для личного прослушивания.
                         </p>
                     </div>
                     <div class="flex justify-start md:justify-end">
@@ -220,7 +255,7 @@
                         <option value="Электрогитары">Электрогитары</option>
                         <option value="Акустические гитары">Акустические гитары</option>
                         <option value="Бас-гитары">Бас-гитары</option>
-                        <option value="Усилители">Усилители</option>
+                        <option value="Усилители">Комбоусилители</option>
                         <option value="Педали эффектов">Педали эффектов</option>
                         <option value="Аксессуары">Аксессуары</option>
                     </select>
@@ -317,7 +352,7 @@
                     Магазин музыкальных инструментов «Мелодия Гитар» работает для тех, кто понимает толк в качественном звуке. Мы не крупный безликий сетевой маркетплейс — мы компактная команда музыкантов и мастеров, которые лично проверяют каждый инструмент, отстраивают анкеры, мензуру и проверяют электронику перед выдачей клиенту.
                 </p>
                 <p>
-                    В нашем каталоге представлены электрогитары, акустические и классические модели, надежные бас-гитары, гитарные усилители, педали перегруза и эффектов, а также необходимые расходники: струны, кабели, медиаторы и чехлы.
+                    В нашем каталоге представлены электрогитары, акустические и классические модели, надежные бас-гитары, гитарные комбоусилители, педали перегруза и эффектов, а также необходимые расходники: струны, кабели, медиаторы и чехлы.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
                     <div class="bg-cardbg border border-bordercol p-4 rounded text-center">
@@ -354,8 +389,14 @@
                 <div class="space-y-6 bg-cardbg border border-bordercol p-6 rounded">
                     <div>
                         <h3 class="font-heading font-bold text-sm text-white uppercase mb-1">Телефоны</h3>
-                        <p class="text-gray-300 text-sm font-medium">+7 949 710 62 63</p>
-                        <p class="text-gray-300 text-sm font-medium">+7 949 700 95 12</p>
+                        <div class="flex items-center gap-2">
+                            <p class="text-gray-300 text-sm font-medium">+7 949 710 62 63</p>
+                            <button type="button" onclick="copyPhone('+79497106263')" class="text-[10px] text-gray-500 hover:text-accentred transition" title="Копировать номер" aria-label="Копировать номер +7 949 710 62 63"><i class="fa-regular fa-copy"></i></button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <p class="text-gray-300 text-sm font-medium">+7 949 700 95 12</p>
+                            <button type="button" onclick="copyPhone('+79497009512')" class="text-[10px] text-gray-500 hover:text-accentred transition" title="Копировать номер" aria-label="Копировать номер +7 949 700 95 12"><i class="fa-regular fa-copy"></i></button>
+                        </div>
                     </div>
                     <div>
                         <h3 class="font-heading font-bold text-sm text-white uppercase mb-1">Адрес</h3>
@@ -443,7 +484,7 @@
             <span class="text-accentred font-semibold tracking-wider uppercase mt-2 sm:mt-0">Специализированный гитарный магазин</span>
         </div>
     </footer>
-
+<!--pp-->>
     <script src="/static/js/shop.js" defer></script>
 
 </body>
