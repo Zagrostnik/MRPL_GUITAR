@@ -85,10 +85,10 @@
         justify-content: space-between;
         width: 100%;
         padding: 8px 10px;
-        border: 1px solid #262626;
+        border: 1px solid #303030;
         border-radius: 5px;
-        background: #0a0a0a;
-        color: #9ca3af;
+        background: linear-gradient(135deg, #141414, #0a0a0a);
+        color: #b0b0b0;
         transition: all 0.18s ease;
         text-align: left;
       }
@@ -100,8 +100,8 @@
       .catalog-category-button.selected {
         border-color: #b91c1c;
         color: #fff;
-        background: rgba(127, 29, 29, 0.18);
-        box-shadow: inset 2px 0 0 #b91c1c;
+        background: linear-gradient(90deg, rgba(185, 28, 28, 0.18), rgba(217, 119, 6, 0.06));
+        box-shadow: inset 3px 0 0 #b91c1c, 0 0 10px rgba(185, 28, 28, 0.08);
       }
 
       .red-line-bottom::after {
@@ -221,6 +221,12 @@
             <i class="fa-solid fa-bars text-lg"></i>
           </button>
         </div>
+      </div>
+      <div class="max-w-7xl mx-auto mt-2 flex justify-end">
+        <button type="button" onclick="switchTab('contacts')" class="text-[10px] sm:text-xs text-gray-400 hover:text-white transition text-right flex items-center gap-2" aria-label="Открыть контакты и адрес магазина">
+          <i class="fa-solid fa-location-dot text-accentred"></i>
+          <span>г. Мариуполь, ул. Казанцева, 17 <span class="text-gray-500">(22 по навигатору), 2-й этаж</span></span>
+        </button>
       </div>
 
       <!-- Mobile Menu Dropdown -->
@@ -799,6 +805,16 @@
             </div>
           </div>
         </div>
+        <section class="overflow-hidden rounded border border-bordercol bg-cardbg" aria-label="Магазин на карте">
+          <div class="flex items-center justify-between gap-3 px-4 py-3 border-b border-bordercol">
+            <div>
+              <h2 class="font-heading font-bold text-sm text-white uppercase">Как нас найти</h2>
+              <p class="text-[11px] text-gray-400 mt-1">Мелодия гитар в Мариуполе · ул. Казанцева, 17</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Мариуполь%2C+улица+Казанцева%2C+17" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[10px] sm:text-xs text-accentred hover:text-red-400 transition">Открыть карту ↗</a>
+          </div>
+          <iframe title="Карта с расположением магазина Мелодия Гитар" src="https://maps.google.com/maps?q=Мариуполь%2C%20улица%20Казанцева%2C%2017&t=&z=16&ie=UTF8&iwloc=&output=embed" class="block w-full h-52 sm:h-64 border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </section>
       </div>
     </main>
 
@@ -886,6 +902,7 @@
           <p class="text-gray-400 text-xs">
             Музыкальные инструменты и комплектующие
           </p>
+          <p class="text-gray-500 text-[10px]">Мелодия гитар в Мариуполе</p>
         </div>
         <div
           class="flex flex-wrap gap-x-6 gap-y-2 text-xs text-gray-400 justify-start md:justify-center"

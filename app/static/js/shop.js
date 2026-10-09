@@ -157,10 +157,16 @@ function switchTab(tabId, categoryParam = null) {
     } else if (tabId === "catalog") {
         document.getElementById("view-catalog")?.classList.remove("hidden");
         currentTab = "catalog";
-        if (categoryParam) {
-            document.getElementById("filter-category").value = categoryParam;
-            document.querySelectorAll(".catalog-category-button").forEach(btn => btn.classList.toggle("selected", btn.dataset.category === categoryParam));
-        }
+        const selectedCategory = categoryParam || "all";
+        document.getElementById("filter-category").value = selectedCategory;
+        document.querySelectorAll(".catalog-category-button").forEach(btn => {
+            const selected = btn.dataset.category === selectedCategory;
+            btn.classList.toggle("selected", selected);
+            const icon = btn.querySelector("i");
+            if (icon) icon.className = selected
+                ? "fa-solid fa-check text-[10px] text-accentred"
+                : "fa-solid fa-chevron-right text-[9px] opacity-50";
+        });
         applyFilters();
     } else if (["about", "contacts", "product"].includes(tabId)) {
         document.getElementById(`view-${tabId}`)?.classList.remove("hidden");
