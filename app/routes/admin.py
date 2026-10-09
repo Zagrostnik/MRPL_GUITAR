@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session, joinedload
 from app.config import settings
 from app.database import get_db
 from app.deps import csrf_token, require_admin, verify_csrf
-from app.models import Category, Order, OrderStatus, Product
+from app.models import Category, Product
 from app.services.uploads import save_image
 
 router = APIRouter(prefix="/admin", tags=["admin"])
@@ -292,36 +292,3 @@ def product_stock(
         product.in_stock = not product.in_stock
         db.commit()
     return redirect("/admin/products")
-
-
-@router.get("/orders", response_class=HTMLResponse)
-def orders_page(request: Request, db: Session = DbSession, _=Depends(require_admin)):
-    orders = db.scalars(
-        select(Order).options(joinedload(Order.items)).order_by(Order.created_at.desc(), Order.id.desc())
-    ).unique().all()
-    return templates.TemplateResponse(
-        request=request,
-        name="orders.html",
-        context={"orders": orders, "statuses": list(OrderStatus), "csrf_token": csrf_token(request)},
-    )
-
-
-@router.post("/orders/{order_id}/status")
-def order_status_update(
-    order_id: int,
-    request: Request,
-    status_value: str = Form(..., alias="status"),
-    token: str | None = Form(None),
-    db: Session = DbSession,
-    _=Depends(require_admin),
-):
-    verify_csrf(request, token)
-    order = db.get(Order, order_id)
-    try:
-        new_status = OrderStatus(status_value)
-    except ValueError:
-        return redirect("/admin/orders")
-    if order is not None:
-        order.status = new_status
-        db.commit()
-    return redirect("/admin/orders")

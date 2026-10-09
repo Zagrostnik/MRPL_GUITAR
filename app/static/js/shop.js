@@ -357,42 +357,32 @@ function updateCartUI() {
     totalPriceEl.textContent = money(total);
 }
 
-async function checkoutOrder() {
+function checkoutOrder() {
     if (!cart.length) {
         showNotification("Корзина пуста", true);
         return;
     }
-    const name = document.getElementById("customer-name")?.value.trim();
-    const phone = document.getElementById("customer-phone")?.value.trim();
-    if (!name || name.length < 2) {
-        showNotification("Укажите имя", true);
-        document.getElementById("customer-name")?.focus();
-        return;
-    }
-    if (!phone) {
-        showNotification("Укажите телефон", true);
-        document.getElementById("customer-phone")?.focus();
-        return;
-    }
 
-    try {
-        const result = await apiJson(`${API_BASE}/orders`, {
-            method: "POST",
-            body: JSON.stringify({
-                customer_name: name,
-                customer_phone: phone,
-                items: cart.map(item => ({ product_id: item.id, quantity: item.qty })),
-            }),
-        });
-        cart = [];
-        updateCartUI();
-        document.getElementById("customer-name").value = "";
-        document.getElementById("customer-phone").value = "";
-        toggleCart();
-        showNotification(`Заказ №${result.id} принят. Менеджер свяжется с вами.`);
-    } catch (error) {
-        showNotification(error.message || "Не удалось оформить заказ", true);
-    }
+    const total = cart.reduce((sum, item) => sum + Number(item.price || 0) * item.qty, 0);
+    const itemsText = cart.map(item => {
+        const lineTotal = Number(item.price || 0) * item.qty;
+        return `• ${item.name} — ${item.qty} шт. × ${money(item.price)} = ${money(lineTotal)}`;
+    }).join("\n");
+
+    const message = [
+        "Здравствуйте! Хочу заказать товары:",
+        "",
+        itemsText,
+        "",
+        `Итого: ${money(total)}`,
+        "",
+        "Подскажите, пожалуйста, по наличию и дальнейшему оформлению заказа."
+    ].join("\n");
+
+    // Telegram opens a chat with the recipient and fills the message draft.
+    // Name, phone, and other customer data are not requested or sent by the site.
+    const telegramUrl = `https://t.me/zgrstnk_01?text=${encodeURIComponent(message)}`;
+    window.location.href = telegramUrl;
 }
 
 function showNotification(message, isError = false) {

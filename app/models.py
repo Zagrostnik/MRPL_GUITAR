@@ -1,7 +1,6 @@
-import enum
 from datetime import datetime, timezone
 
-from sqlalchemy import Boolean, DateTime, Enum, ForeignKey, Integer, String, Text
+from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
@@ -9,13 +8,6 @@ from app.database import Base
 
 def utcnow() -> datetime:
     return datetime.now(timezone.utc)
-
-
-class OrderStatus(str, enum.Enum):
-    NEW = "Новый"
-    IN_PROGRESS = "В обработке"
-    DONE = "Завершен"
-    CANCELLED = "Отменен"
 
 
 class Category(Base):
@@ -52,51 +44,3 @@ class Product(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
 
     category: Mapped["Category"] = relationship(back_populates="products")
-
-
-class Order(Base):
-    __tablename__ = "orders"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    customer_name: Mapped[str] = mapped_column(String(100))
-    customer_phone: Mapped[str] = mapped_column(String(30))
-    status: Mapped[OrderStatus] = mapped_column(
-        Enum(
-            OrderStatus,
-            native_enum=False,
-            length=20,
-            # В БД хранятся русские значения ("Новый"), а не имена членов enum
-            values_callable=lambda e: [m.value for m in e],
-        ),
-        default=OrderStatus.NEW,
-        index=True,
-    )
-    total_price: Mapped[int] = mapped_column(Integer, default=0)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow, index=True)
-
-    items: Mapped[list["OrderItem"]] = relationship(
-        back_populates="order",
-        cascade="all, delete-orphan",
-        order_by="OrderItem.id",
-    )
-
-
-class OrderItem(Base):
-    __tablename__ = "order_items"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    order_id: Mapped[int] = mapped_column(
-        ForeignKey("orders.id", ondelete="CASCADE"), index=True
-    )
-    # SET NULL: если товар удалят из каталога, история заказа сохранится
-    product_id: Mapped[int | None] = mapped_column(
-        ForeignKey("products.id", ondelete="SET NULL"), default=None
-    )
-    # Снимок названия на момент заказа (нужен, если товар потом удалят/переименуют)
-    product_name: Mapped[str] = mapped_column(String(200))
-    quantity: Mapped[int] = mapped_column(Integer)
-    # Цена за 1 шт. на момент заказа (позже цена товара может измениться)
-    price: Mapped[int] = mapped_column(Integer)
-
-    order: Mapped["Order"] = relationship(back_populates="items")
-    product: Mapped["Product | None"] = relationship()

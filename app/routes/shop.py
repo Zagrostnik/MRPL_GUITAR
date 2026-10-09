@@ -5,11 +5,9 @@ from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session, joinedload
 
 from app.database import get_db
-from app.models import Category, Order, OrderItem, OrderStatus, Product
+from app.models import Category, Product
 from app.schemas import (
     CategoryOut,
-    OrderCreate,
-    OrderCreated,
     ProductListOut,
     ProductOut,
     ProductSort,
@@ -125,52 +123,3 @@ def get_product(product_id: int, db: DbSession):
     if product is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Товар не найден")
     return product
-
-
-# ---------------------------------------------------------------------------
-# Оформление заказа
-# ---------------------------------------------------------------------------
-
-
-@router.post("/orders", response_model=OrderCreated, status_code=status.HTTP_201_CREATED)
-def create_order(payload: OrderCreate, db: DbSession):
-    """
-    Принимает имя, телефон и состав корзины (только id и количество).
-    Названия и цены берутся из БД, так что подменить цену с клиента нельзя.
-    Товары «под заказ» (in_stock = False) заказывать можно.
-    """
-    ids = [item.product_id for item in payload.items]
-    products = {p.id: p for p in db.scalars(select(Product).where(Product.id.in_(ids)))}
-
-    missing = [pid for pid in ids if pid not in products]
-    if missing:
-        raise HTTPException(
-            status.HTTP_400_BAD_REQUEST,
-            detail={
-                "message": "Некоторые товары больше недоступны. Обновите страницу и повторите заказ.",
-                "missing_product_ids": missing,
-            },
-        )
-
-    order = Order(
-        customer_name=payload.customer_name,
-        customer_phone=payload.customer_phone,
-        status=OrderStatus.NEW,
-    )
-    total = 0
-    for item in payload.items:
-        product = products[item.product_id]
-        order.items.append(
-            OrderItem(
-                product_id=product.id,
-                product_name=product.name,
-                quantity=item.quantity,
-                price=product.price,  # цена фиксируется на момент заказа
-            )
-        )
-        total += product.price * item.quantity
-    order.total_price = total
-
-    db.add(order)
-    db.commit()
-    return order

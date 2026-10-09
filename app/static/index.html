@@ -856,20 +856,10 @@
           </div>
           <!-- Cart Footer -->
           <div class="p-4 border-t border-bordercol bg-darkbg space-y-3">
-            <input
-              id="customer-name"
-              type="text"
-              maxlength="100"
-              placeholder="Ваше имя"
-              class="w-full bg-cardbg border border-bordercol rounded text-xs px-3 py-2 text-gray-200 focus:outline-none focus:border-accentred"
-            />
-            <input
-              id="customer-phone"
-              type="tel"
-              maxlength="30"
-              placeholder="Телефон, например +7 949 123-45-67"
-              class="w-full bg-cardbg border border-bordercol rounded text-xs px-3 py-2 text-gray-200 focus:outline-none focus:border-accentred"
-            />
+            <p class="text-[11px] leading-relaxed text-gray-400">
+              Для оформления заказа откроется Telegram-чат <span class="text-gray-200">@zgrstnk_01</span>
+              с готовым сообщением о товарах из корзины. Имя и телефон на сайте вводить не нужно.
+            </p>
             <div
               class="flex justify-between items-center text-sm font-bold text-white"
             >
@@ -882,7 +872,7 @@
               onclick="checkoutOrder()"
               class="w-full bg-accentred hover:bg-red-700 text-white font-semibold text-xs py-3 rounded transition uppercase tracking-wider shadow-lg shadow-red-900/30"
             >
-              Оформить заказ
+              Оформить заказ в Telegram
             </button>
           </div>
         </div>

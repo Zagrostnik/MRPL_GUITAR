@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy import text
 from starlette.middleware.sessions import SessionMiddleware
 
 from app import models  # noqa: F401
@@ -16,8 +17,17 @@ INDEX_FILE = STATIC_DIR / "index.html"
 settings.upload_dir.mkdir(parents=True, exist_ok=True)
 
 
+def remove_legacy_order_tables() -> None:
+    """Remove the old order system and its stored customer details during migration."""
+    with engine.begin() as connection:
+        # Child table first to respect foreign keys on SQLite and PostgreSQL.
+        connection.execute(text("DROP TABLE IF EXISTS order_items"))
+        connection.execute(text("DROP TABLE IF EXISTS orders"))
+
+
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
+    remove_legacy_order_tables()
     Base.metadata.create_all(engine)
     if settings.seed_demo_data:
         with SessionLocal() as db:

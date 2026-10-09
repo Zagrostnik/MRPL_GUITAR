@@ -3,7 +3,7 @@
 {% block content %}
 <div class="max-w-sm mx-auto mt-16 bg-[#141414] border border-[#2a2a2a] rounded-xl p-6">
     <h1 class="text-xl font-bold mb-2">Вход в админку</h1>
-    <p class="text-sm text-gray-400 mb-6">Управление товарами, категориями и заказами.</p>
+    <p class="text-sm text-gray-400 mb-6">Управление товарами и категориями.</p>
     {% if error %}<div class="mb-4 p-3 rounded bg-red-950/50 border border-red-800 text-red-300 text-sm">{{ error }}</div>{% endif %}
     <form method="post" action="/admin/login" class="space-y-4">
         <input type="hidden" name="token" value="{{ csrf_token }}">
